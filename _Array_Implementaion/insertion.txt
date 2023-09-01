@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main(){
+    int _arr[] = {10,14,20,34,45,8,4,3,23};
+    int __arr[sizeof(_arr)/sizeof(int) + 1];
+    
+    for(int i = 0;i < sizeof(__arr)/sizeof(int);i++){
+        if(i == 2){
+            __arr[i] = 12;
+        }
+        else{
+            if(i > 2){
+            __arr[i] = _arr[i - 1];
+            }
+            if(i < 2){
+                __arr[i] = _arr[i];
+            }
+        }
+    }
+    
+    for(int i = 0;i < sizeof(__arr)/sizeof(int);i++){
+        printf("%d ", __arr[i]);
+    }
+    
+    return 0;
+}

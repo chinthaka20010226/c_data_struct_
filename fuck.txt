@@ -1,0 +1,124 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node{
+    int data;
+    struct node *next;
+};
+
+int main(){
+    struct node *head ,*new_node ,*temp ,*prev ,*next_node ,*temp1 ,*temp2 ,*next1 ,*next2 ,*prev1 ,*prev2;
+    int n,count = 0;
+    
+    printf("enter the no.of nodes: ");
+    scanf("%d", &n);
+    
+    head = NULL;
+    
+    do{
+        new_node = (struct node *)malloc(sizeof(struct node));
+    
+        printf("enter the value of element: ");
+        scanf("%d", &new_node -> data);
+    
+        new_node -> next = NULL;
+    
+        if(head == NULL){
+            head = temp = new_node;
+        }
+        else{
+            temp -> next = new_node;
+            temp = new_node;
+        }
+        
+        n--;
+        
+    }while(n > 0);
+    
+    
+    // // display linked list
+    // temp = head;
+    
+    // while(temp != NULL){
+    //     printf("%d ", temp -> data);
+    //     temp = temp -> next;
+    //     count++;
+    // }
+    // printf("\n");
+    // printf("%d", count);
+    
+    
+    // //reverse order
+    // temp = next_node = head;
+    // prev = NULL;
+    
+    // while(next_node != NULL){
+    //     next_node = next_node -> next;
+    //     temp -> next = prev;
+    //     prev = temp;
+    //     temp = next_node;
+    // }
+    // head = prev;
+    
+    // // after reverse
+    // temp = head;
+    
+    // while(temp != NULL){
+    //     printf("%d ", temp -> data);
+    //     temp = temp -> next;
+    // }
+    
+    temp1 = temp2 = next1 = next2 = head;
+    prev1 = prev2 = NULL;
+    n = count;
+    
+    while(temp1 -> next != NULL){
+        next1 = next1 -> next;
+        while(temp2 -> next != NULL){
+            next2 = next2 -> next;
+            if((temp1 -> data) == (temp2 -> data)){
+                if(temp1 == temp2){
+                    printf("this is a same node");
+                }
+                else if((temp1 -> next) == temp2){
+                    prev1 -> next = next2;
+                    free(temp1);
+                    free(temp2);
+                }
+                else{
+                    if(temp1 == head){
+                        head = next1;
+                        free(temp1);
+                    }
+                    else{
+                        prev1 -> next = next1;
+                        free(temp1);
+                    }
+                    prev2 -> next = next2;
+                    free(temp2);
+                    
+                }
+            }
+            prev2 = temp2;
+            temp2 = temp2 -> next;
+        }
+        prev1 = temp1;
+        temp1 = temp1 -> next;
+    }
+    
+    temp = head;
+    
+    while(temp != NULL){
+        printf("%d ", temp -> data);
+        temp = temp -> next;
+        count++;
+    }
+    printf("\n");
+    
+    
+    
+    
+    
+    
+    return 0;
+}

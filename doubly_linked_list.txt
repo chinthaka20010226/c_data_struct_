@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node{
+    int data;
+    struct node *next;
+    struct node *prev;
+};
+
+int main(){
+    struct node *head ,*newnode ,*tail ,*temp;
+    int n;
+
+    printf("enter no.of elements: ");
+    scanf("%d", &n);
+
+    head = NULL;
+
+    // create nodes
+    do{
+        newnode = (struct node *)malloc(sizeof(struct node));
+
+        printf("input value of node: ");
+        scanf("%d", &newnode -> data);
+
+        newnode -> next = NULL;
+        newnode -> prev = NULL;
+
+        if(head == NULL){
+            head = tail = newnode;
+        }
+        else{
+            tail -> next = newnode;
+            newnode -> prev = tail;
+            tail = newnode;
+        }
+        n--;
+
+    }while(n > 0);
+
+    // display
+    temp = head;
+    while(temp != NULL){
+        printf("%d ", temp -> data);
+        temp = temp -> next;
+    }
+
+    return 0;
+}

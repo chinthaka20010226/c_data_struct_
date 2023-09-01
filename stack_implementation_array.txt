@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 4
+
+int stack_arr[MAX];
+int top = -1;
+
+int push(int data){
+    if(top == MAX - 1){
+        printf("stack overflow\n");
+        return;
+    }
+    top++;
+    stack_arr[top] = data;
+}
+
+int pop(){
+    int value;
+    if(top == -1){
+        printf("stack underflow\n");
+        return;
+    }
+    value = stack_arr[top];
+    top--;
+    return value;
+    printf("\n");
+}
+
+int print(){
+    if(top == -1){
+        printf("stack unerflow\n");
+        return;
+    }
+    for(int i = 0;i <= top;i++){
+        printf("%d ", stack_arr[i]);
+    }
+    printf("\n");
+}
+
+int main(){
+    push(1);
+    push(3);
+    push(7);
+    push(9);
+    push(33);
+    
+    printf("\ndelete element is %d\n", pop());
+    
+    print();
+    
+    push(33);
+    push(0);
+    
+    print();
+}
+
+

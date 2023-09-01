@@ -1,0 +1,41 @@
+// calling library
+#include <stdio.h>
+
+int main(){
+    int arr[100]; // declaring array
+    int i,n,pos,num;
+    
+    printf("enter the no.of elements:");
+    scanf("%d", &n);
+    
+    // insert elements to array
+    for(int i = 0;i < n;i++){
+        printf("element %d", (i+1));
+        scanf("%d", &arr[i]);
+    }
+    
+    // enter new value
+    printf("enter the new value:");
+    scanf("%d", &num);
+    
+    // enter the position
+    printf("enter the position:");
+    scanf("%d", &pos);
+    
+    // increment the size
+    n++;
+    
+    for(int i = n - 1;i >= pos - 1;i--){
+        arr[i] = arr[i - 1];
+    }
+    
+    arr[pos - 1] = num;
+    
+    for(i = 0;i < n;i++){
+        printf("%d ", arr[i]);
+    }
+    
+    return 0;
+}
+
+

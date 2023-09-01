@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int searchItem(int *ptr,int *item){
+    for(int i = 0;;i++){
+        if(*ptr == *item){
+            return i;
+        }
+        ptr++;
+    }
+    printf("this item not in this array");
+}
+
+int main(){
+    int _arr[] = {10,14,20,34,45,8,4,3,23};
+    int indx,item;
+    
+    printf("what is the item do you want to check ??? ");
+    scanf("%d", &item);
+    
+    indx = searchItem(_arr,&item);
+    
+    printf("your item index is: %d", indx);
+    
+    return 0;
+}
